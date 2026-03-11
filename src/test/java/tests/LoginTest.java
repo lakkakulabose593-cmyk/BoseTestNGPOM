@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.junit.Assert;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import utils.Log;
 import base.BaseTest;
@@ -37,9 +36,7 @@ public class LoginTest extends BaseTest{
 //		};
 //	}we can use this type of object instead of Excel
 	
-	//@Test(dataProvider="LoginData")//here we have to give the name of the data provider ex:-TestData, TestData2....
-	@Test
-	@Parameters({"username","password"})
+	@Test(dataProvider="LoginData")//here we have to give the name of the data provider ex:-TestData, TestData2....
 	public void testValidLogin(String username, String password) {
 		Log.info("Starting Login Test ...");
 		test = ExtentReportManager.createTest("Login Test -"+username);
@@ -55,7 +52,7 @@ public class LoginTest extends BaseTest{
 		loginPage.clickLogin();
 		Log.info("Clicking on Login Button");
 		System.out.println("Title of the page is:"+driver.getTitle());
-		Assert.assertEquals(driver.getTitle(),"Dashboard / nopCommerce administration");
+		Assert.assertEquals(driver.getTitle(),"nopCommerce demo store. Login");
 	}
 	/*@Test
 	public void falseTestValidLogin() {
